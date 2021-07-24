@@ -14,34 +14,30 @@ import { Router } from '@angular/router';
 export class TablesComponent implements OnInit {
     public users: any ;
     public id: number;
+    public filterData: any;
 
-<<<<<<< HEAD
+
     constructor(private router: Router , private userService: UserService) {}
-=======
-    constructor(private userService: UserService) {
-        this.getUsers();
-    }
->>>>>>> ee171e65007fd3f6898ccdae159305e5eb9c7a40
+
 
     ngOnInit() {
+        this.getUsers();
+        setTimeout(() => {
+            this.search(this.users);
+        }, 1000);
+
     }
 
-    getUsers() {
-<<<<<<< HEAD
+    public getUsers() {
+
          this.userService.findAllUsers()
          .subscribe(data => {
              console.log(data);
 
           this.users = data ;
-          console.log('-------' + this.users[0].softSkills) ;
-=======
-        this.userService.findAllUsers().subscribe((data: any) => {
-                console.log('----- data is ------ ', data);
-                this.users = data;
+          //console.log('-------' + this.users[0].softSkills) ;
+         });
         }
-        );
-    }
->>>>>>> ee171e65007fd3f6898ccdae159305e5eb9c7a40
 
     createUsers(user: User) {
         this.userService.createUser(user)
@@ -64,4 +60,17 @@ export class TablesComponent implements OnInit {
         console.log(localStorage.getItem('id'))  ;
         this.router.navigate(['/soft-skill']);
     }
+
+    search(term: string) {
+        console.log("executed")
+        if(!term) {
+            this.getUsers();
+        } else {
+          this.filterData = this.users.filter(x => 
+             x.prenom.trim().toLowerCase().includes(term.trim().toLowerCase())
+          );
+          this.users = this.filterData;
+        }
+        
+      }
 }

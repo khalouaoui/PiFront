@@ -1,0 +1,99 @@
+<!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
+<div [@routerTransition]>
+  <app-page-header [heading]="'Offres'" [icon]="'fa-table'"></app-page-header>
+  <div class="row">
+      <div class="col col-xl-12 col-lg-12">
+          <div class="card mb-3">
+              <div class="card-header">
+                  <b class="col col-lg-2">Liste des offres </b>
+                  <input class="col col-lg-8" type="text" (keyup)="search($event.target.value)" placeholder="{{ 'Search' | translate}}"> &nbsp;&nbsp;
+                  <a [routerLink]="['/offer']" class="col-lg-2 btn btn-success btn-rounded">Ajouter offre</a>
+
+              </div>
+              <table class="card-body table table-hover table-bordered">
+                  <thead class="thead-dark">
+                  <tr>
+                      <th>id</th>
+                      <th>Date de départ</th>
+                      <th>Date de retour</th>
+                      <th>Lieu de départ</th>
+                      <th>Lieu d'arrivée</th>
+                      <th>Nombre de places</th>
+                      <th>Disponibilité</th>
+                      <th colspan="3">action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let offer of offers , let i=index">
+                      <th scope="row">{{this.offer.id}}</th>
+                      <td>{{this.offer.dateDepart | date: 'dd/MM/yyyy'}}</td>
+                      <td>{{this.offer.dateRetour | date: 'dd/MM/yyyy'}}</td>
+                      <td>{{this.offer.lieuDepart}}</td>
+                      <td>{{this.offer.lieuArrivee}}</td>
+                      <td>{{this.offer.nbPlaces}}</td>
+                      <td>{{this.offer.disponibiliteOffre}}</td>
+                      <td>
+                          <button class="btn btn-primary" (click)="soft(this.offer.id)"><i class="fa fa-eye" aria-hidden="true" title="Details"></i></button>
+                          <button class="btn btn-warning" (click)="open(content,this.offer.id)"><i class="fa fa-pencil-square" aria-hidden="true" title="Edit"></i></button>
+                          <button class="btn btn-danger" (click)="deleteOffer(this.offer.id)"><i class="fa fa-trash" aria-hidden="true" title="Delete"></i></button>
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!--Modal-->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Modifier offre</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="userForm">
+      <div class="form-group">
+        <label for="dateDepart">Date de départ</label>
+        <div class="input-group">
+          <input type="date" id="dateDepart" formControlName="dateDepart" class="form-control" placeholder="yyyy-mm-dd">
+          <!--<div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>-->
+        </div>
+          <label for="dateArrivee">Date Arrivée</label>
+          <div class="input-group">
+          <input type="date" id="dateArrivee" formControlName="dateRetour" class="form-control" placeholder="yyyy-mm-dd"  >
+          <!--<div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dpp.toggle()" type="button"></button>
+          </div>-->
+        </div>&nbsp;
+        <div class="input-group">
+          <input type="text" formControlName="lieuDepart" class="form-control" id="" placeholder="{{ 'Lieu départ' }}">
+        </div>&nbsp;
+        <div class="input-group">
+          <input type="text" formControlName="lieuArrivee" class="form-control" id="" placeholder="{{ 'Lieu arrivée' }}">
+        </div>&nbsp;
+        <div class="input-group">
+          <input type="number" formControlName="nbPlaces" class="form-control" id="" placeholder="{{ 'Nombre de places' }}">
+        </div>&nbsp;
+        <div class="input-group">
+          <input type="text" formControlName="disponibiliteOffre" class="form-control" id="" placeholder="{{ 'Disponibilité' }}">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-outline-primary" (click)="this.update(this.id)">Enregistrer</button>
+  </div>
+</ng-template>
+
+
+
+
+

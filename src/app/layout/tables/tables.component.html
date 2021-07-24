@@ -2,19 +2,15 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
 <div [@routerTransition]>
-    <app-page-header [heading]="'Tables'" [icon]="'fa-table'"></app-page-header>
+    <app-page-header [heading]="'Employés'" [icon]="'fa-table'"></app-page-header>
     <div class="row">
         <div class="col col-xl-12 col-lg-12">
             <div class="card mb-3">
                 <div class="card-header">
-                    <b class="col col-lg-2">Users List </b>
-<<<<<<< HEAD
-                    <input class="col col-lg-8" type="text" placeholder="{{ 'Search' | translate}}"> &nbsp;&nbsp;
-                    <a [routerLink]="['/signup']" class="col-lg-2 btn btn-success btn-rounded">Add new User</a>
-=======
-                    <input class="col col-lg-8" type="text" placeholder="search"> &nbsp;&nbsp;
-                    <a [routerLink]="['/signup']" class="col-lg-2 btn btn-success btn-rounded" >Add new User</a>
->>>>>>> ee171e65007fd3f6898ccdae159305e5eb9c7a40
+                    <b class="col col-lg-2">Liste des employés</b>
+                    <input class="col col-lg-8" type="text" (keyup)="search($event.target.value)" placeholder="{{ 'Search' | translate}}"> &nbsp;&nbsp;
+                    <a [routerLink]="['/signup']" class="col-lg-2 btn btn-success btn-rounded">Ajouter employé</a>
+
                 </div>
                 <table class="card-body table table-hover table-bordered">
                     <thead class="thead-dark">

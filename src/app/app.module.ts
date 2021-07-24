@@ -9,6 +9,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import {RouterModule} from '@angular/router';
+import { SignupComponent } from './AddOffer/signup.component';
+import { SignupModule } from './AddOffer/signup.module';
+import { OffresComponent } from './layout/offres/offres.component';
+import { OffresModule } from './layout/offres/offres.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 

@@ -1,0 +1,34 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <img class="user-avatar" src="assets/images/logo.png" width="150px" />
+            <h1>Ajouter Offre</h1>
+            <form role="form" [formGroup]="userForm" >
+                <div class="form-content">
+                    <div class="form-group">
+                        <input type="date" formControlName="dateDepart"  class="form-control input-underline input-lg" id="" placeholder="Date de départ" >
+                    </div>
+
+                    <div class="form-group">
+                        <input type="date" formControlName="dateRetour" class="form-control input-underline input-lg" id="" placeholder="{{ 'Prenom' }}">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" formControlName="lieuDepart" class="form-control input-underline input-lg" id="" placeholder="{{ 'Lieu départ' }}">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="lieuArrivee" class="form-control input-underline input-lg" id="" placeholder="{{ 'Lieu arrivée'}}">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" formControlName="nbPlaces"  class="form-control input-underline input-lg" id="" placeholder="{{ 'Nombre de places' }}">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="disponibiliteOffre" class="form-control input-underline input-lg" id="" placeholder="{{ 'Disponibilité' }}">
+                    </div>
+                </div>
+                <button class="btn rounded-btn" [routerLink]= "'/offers'" (click)="onSubmit()" type="submit">{{ 'Enregistrer offre'}}</button>&nbsp;
+            
+            </form>
+        </div>
+    </div>
+</div>

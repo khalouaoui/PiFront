@@ -2,7 +2,7 @@
     <div class="row justify-content-md-center">
         <div class="col-md-4">
             <img class="user-avatar" src="assets/images/logo.png" width="150px" />
-            <h1>Primeur HR</h1>
+            <h1>Ajouter Employé</h1>
             <form role="form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
                 <div class="form-content">
                     <div class="form-group">
@@ -26,7 +26,7 @@
                         <input type="text" formControlName="equipe" class="form-control input-underline input-lg" id="" placeholder="{{ 'Equipe' | translate }}">
                     </div>
                 </div>
-                <button class="btn rounded-btn" [routerLink]= "'/tables'" (click)="userService.createUser(userForm.getRawValue())" type="submit">{{ 'Register' | translate }}</button>&nbsp;
+                <button class="btn rounded-btn" [routerLink]= "'/tables'" (click)="onSubmit()" type="submit">{{ 'Register' | translate }}</button>&nbsp;
 
             </form>
         </div>
