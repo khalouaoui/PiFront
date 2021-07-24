@@ -8,7 +8,7 @@
             <div class="card mb-3">
                 <div class="card-header">
                     <b class="col col-lg-2">Liste des employés</b>
-                    <input class="col col-lg-8" type="text" (keyup)="search($event.target.value)" placeholder="{{ 'Search' | translate}}"> &nbsp;&nbsp;
+                    <input class="col col-lg-8" type="text" (keyup)="search($event.target.value)" placeholder="{{ 'Chercher (Prénom)' | translate}}"> &nbsp;&nbsp;
                     <a [routerLink]="['/signup']" class="col-lg-2 btn btn-success btn-rounded">Ajouter employé</a>
 
                 </div>
@@ -34,7 +34,7 @@
                         <td>{{this.user.fonction}}</td>
                         <td>
                             <button class="btn btn-primary" (click)="soft(this.user.id)"><i class="fa fa-eye" aria-hidden="true" title="Details"></i></button>
-                            <button class="btn btn-warning"><i class="fa fa-pencil-square" aria-hidden="true" title="Edit"></i></button>
+                            <button class="btn btn-warning" (click)="open(content,this.user.id)"><i class="fa fa-pencil-square" aria-hidden="true" title="Edit"></i></button>
                             <button class="btn btn-danger" (click)="deleteUser(this.user.id)"><i class="fa fa-trash" aria-hidden="true" title="Delete"></i></button>
                         </td>
                     </tr>
@@ -44,3 +44,40 @@
         </div>
     </div>
 </div>
+
+<!--Modal-->
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Modifier Employé</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="userForm">
+        <div class="form-group">
+            <input type="text" formControlName="nom"  class="form-control input-underline input-lg" id="" placeholder="{{ 'Nom' | translate }}">
+        </div>
+
+        <div class="form-group">
+            <input type="text" formControlName="prenom" class="form-control input-underline input-lg" id="" placeholder="{{ 'Prenom' | translate }}">
+        </div>
+
+        <div class="form-group">
+            <input type="text" formControlName="mail" class="form-control input-underline input-lg" id="" placeholder="{{ 'Email' | translate }}">
+        </div>
+        <div class="form-group">
+            <input type="password" formControlName="password" class="form-control input-underline input-lg" id="" placeholder="{{ 'Password' | translate }}">
+        </div>
+        <div class="form-group">
+            <input type="text" formControlName="fonction"  class="form-control input-underline input-lg" id="" placeholder="{{ 'Fonction' | translate }}">
+        </div>
+        <div class="form-group">
+            <input type="text" formControlName="equipe" class="form-control input-underline input-lg" id="" placeholder="{{ 'Equipe' | translate }}">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-outline-primary" (click)="this.update(this.id)">Enregistrer</button>
+    </div>
+  </ng-template>
