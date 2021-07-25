@@ -29,6 +29,10 @@ public updateOffre(id: number, offre: Offre) {
     return this.http.put(Settings.OFFRE_URL + '/' + id, offre) ;
 }
 
+public sendInvi(email : String) {
+  return this.http.post(Settings.OFFRE_URL + '/'+'invi' +'?' + 'email' + '=' + email,{});
+}
+
 
 }
 

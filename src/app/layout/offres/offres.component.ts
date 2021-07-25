@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Offre } from 'src/app/models/offre';
 import { OffreService } from 'src/app/service/offre/offre.service';
+import { UserService } from 'src/app/service/user/user.service';
 
 @Component({
   selector: 'app-offres',
@@ -17,9 +18,12 @@ export class OffresComponent implements OnInit {
   public filterData: any;
   public closeResult = '';
   public userForm: FormGroup ;
+  public matchingForm: FormGroup ;
+  public employeeId : any;
+  public email : any;
 
 
-  constructor(private router: Router , private offreService: OffreService, private modalService: NgbModal,public formBuilder: FormBuilder) {}
+  constructor(private router: Router , private userService: UserService, private offreService: OffreService, private modalService: NgbModal,public formBuilder: FormBuilder) {}
 
 
   ngOnInit() {
@@ -32,11 +36,33 @@ export class OffresComponent implements OnInit {
       disponibiliteOffre: ['', [Validators.required]]
 
   });  
-
+      this.getUsers();
       this.getOffers();
       setTimeout(() => {
         this.search(this.offers);
     }, 1000);
+
+    this.matchingForm = this.formBuilder.group(
+      {
+       id: ['', Validators.required]
+      }
+    );
+  }
+
+  public getUsers()
+  {
+    this.userService.findAllUsers().subscribe(
+      data => {console.log(data);
+               this.employeeId = data;                  }
+    );
+  }
+
+  public sendInvi() 
+  {
+    this.email = this.matchingForm.value.id ; 
+    this.offreService.sendInvi(this.email).subscribe(
+        data => {console.log("mail OK!")}
+    );
   }
 
   public getOffers() {
@@ -115,8 +141,13 @@ export class OffresComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-
   
-
+  opens(cont) {
+    this.modalService.open(cont, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
 
 }

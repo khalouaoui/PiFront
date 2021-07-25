@@ -36,7 +36,7 @@
                       <td>{{this.offer.nbPlaces}}</td>
                       <td>{{this.offer.disponibiliteOffre}}</td>
                       <td>
-                          <button class="btn btn-primary" (click)="soft(this.offer.id)"><i class="fa fa-eye" aria-hidden="true" title="Details"></i></button>
+                          <button class="btn btn-primary" (click)="opens(cont)"><i class="fa fa-eye" aria-hidden="true" title="Details"></i></button>
                           <button class="btn btn-warning" (click)="open(content,this.offer.id)"><i class="fa fa-pencil-square" aria-hidden="true" title="Edit"></i></button>
                           <button class="btn btn-danger" (click)="deleteOffer(this.offer.id)"><i class="fa fa-trash" aria-hidden="true" title="Delete"></i></button>
                       </td>
@@ -90,6 +90,32 @@
   </div>
   <div class="modal-footer">
     <button type="submit" class="btn btn-outline-primary" (click)="this.update(this.id)">Enregistrer</button>
+  </div>
+</ng-template>
+
+
+<!--Modal-->
+<ng-template #cont let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Envoyer invitation par mail</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="matchingForm">
+      <div class="form-group">
+        <label>Nom Complet de l'employé</label>
+        <div class="input-group">
+          <select formControlName="id"  class="form-control" required>
+            <option *ngFor="let emp of employeeId ; let i=index" value="{{this.emp.mail}}">{{this.emp.prenom }} {{this.emp.nom }}</option>
+          </select>
+          </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-outline-primary" (click)="this.sendInvi()">Envoyer</button>
   </div>
 </ng-template>
 
