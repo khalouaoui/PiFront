@@ -40,6 +40,7 @@ export class SignupComponent implements OnInit {
         this.userService.createUser(body).subscribe((data: any) => {
             console.log("submit value:",data) ;
             this.router.navigate(['/tables']) ;
+            location.reload();
         });
         } else {
             alert('forme non valide!!!');

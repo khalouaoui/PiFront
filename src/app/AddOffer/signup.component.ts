@@ -41,6 +41,7 @@ export class SignupComponent implements OnInit {
         this.userService.createOffre(body).subscribe((data: any) => {
             console.log("submit value:",data) ;
             this.router.navigate(['/offers']) ;
+            location.reload();
         });
         } else {
             alert('forme non valide!!!');

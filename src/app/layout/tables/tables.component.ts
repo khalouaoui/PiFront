@@ -102,6 +102,7 @@ export class TablesComponent implements OnInit {
             };
         this.userService.updateUser(id,body).subscribe((data: any) => {
             console.log("submit value:",data) ;
+            location.reload();
             //this.router.navigate(['/tables']) ;
         });
         } else {

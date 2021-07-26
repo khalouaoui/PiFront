@@ -95,6 +95,7 @@ export class OffresComponent implements OnInit {
         };
     this.offreService.updateOffre(id,body).subscribe((data: any) => {
         console.log("submit value:",data) ;
+        location.reload();
         //this.router.navigate(['/offers']) ;
     });
     } else {
