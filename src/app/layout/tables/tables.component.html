@@ -56,24 +56,24 @@
     <div class="modal-body">
       <form [formGroup]="userForm">
         <div class="form-group">
-            <input type="text" formControlName="nom"  class="form-control input-underline input-lg" id="" placeholder="{{ 'Nom' | translate }}">
+            <input value="{{this.user.nom}}" type="text" formControlName="nom"  class="form-control input-underline input-lg" id="" placeholder="{{ 'Nom' | translate }}">
         </div>
 
         <div class="form-group">
-            <input type="text" formControlName="prenom" class="form-control input-underline input-lg" id="" placeholder="{{ 'Prenom' | translate }}">
+            <input value="{{this.user.prenom}}" type="text" formControlName="prenom" class="form-control input-underline input-lg" id="" placeholder="{{ 'Prenom' | translate }}">
         </div>
 
         <div class="form-group">
-            <input type="text" formControlName="mail" class="form-control input-underline input-lg" id="" placeholder="{{ 'Email' | translate }}">
+            <input value="{{this.user.mail}}" type="text" formControlName="mail" class="form-control input-underline input-lg" id="" placeholder="{{ 'Email' | translate }}">
         </div>
         <div class="form-group">
-            <input type="password" formControlName="password" class="form-control input-underline input-lg" id="" placeholder="{{ 'Password' | translate }}">
+            <input value="{{this.user.password}}" type="password" formControlName="password" class="form-control input-underline input-lg" id="" placeholder="{{ 'Password' | translate }}">
         </div>
         <div class="form-group">
-            <input type="text" formControlName="fonction"  class="form-control input-underline input-lg" id="" placeholder="{{ 'Fonction' | translate }}">
+            <input value="{{this.user.fonction}}" type="text" formControlName="fonction"  class="form-control input-underline input-lg" id="" placeholder="{{ 'Fonction' | translate }}">
         </div>
         <div class="form-group">
-            <input type="text" formControlName="equipe" class="form-control input-underline input-lg" id="" placeholder="{{ 'Equipe' | translate }}">
+            <input value="{{this.user.equipe}}" type="text" formControlName="equipe" class="form-control input-underline input-lg" id="" placeholder="{{ 'Equipe' | translate }}">
         </div>
       </form>
     </div>

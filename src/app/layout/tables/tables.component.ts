@@ -19,18 +19,19 @@ export class TablesComponent implements OnInit {
     public filterData: any;
     public userForm: FormGroup ;
     public closeResult = '';
+    public user : any;
 
     constructor(private router: Router , private userService: UserService,private formBuilder: FormBuilder,private modalService: NgbModal) {}
 
 
     ngOnInit() {
         this.userForm = this.formBuilder.group({
-            nom: ['', [Validators.required]] ,
-            prenom: ['', [Validators.required]],
-            mail: ['', [Validators.required]],
-            password: ['', [Validators.required]],
-            equipe: ['', [Validators.required]],
-            fonction: ['', [Validators.required]]
+            nom: [''] ,
+            prenom: [''],
+            mail: [''],
+            password: [''],
+            equipe: [''], //[Validators.required]
+            fonction: ['']
 
         });
 
@@ -86,7 +87,13 @@ export class TablesComponent implements OnInit {
         }
         
       }
-
+      
+      getUserById(id : number)
+      {
+    this.userService.findById(id).subscribe(
+       (data) => {this.user = data;}
+    );
+      }
       
     
 
@@ -111,6 +118,7 @@ export class TablesComponent implements OnInit {
     }
 
     open(content, id) {
+        this.getUserById(id);
         this.id = id;
         this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
           this.closeResult = `Closed with: ${result}`;

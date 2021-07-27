@@ -61,29 +61,33 @@
       <div class="form-group">
         <label for="dateDepart">Date de départ</label>
         <div class="input-group">
-          <input type="date" id="dateDepart" formControlName="dateDepart" class="form-control" placeholder="yyyy-mm-dd">
+          <input value="{{this.offer.dateDepart}}" type="date" id="dateDepart" formControlName="dateDepart" class="form-control" placeholder="{{this.offer.dateDepart}}">
           <!--<div class="input-group-append">
             <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
           </div>-->
         </div>
           <label for="dateArrivee">Date Arrivée</label>
           <div class="input-group">
-          <input type="date" id="dateArrivee" formControlName="dateRetour" class="form-control" placeholder="yyyy-mm-dd"  >
+          <input value="{{this.offer.dateArrivee}}" type="date" id="dateArrivee" formControlName="dateRetour" class="form-control" placeholder="yyyy-mm-dd"  >
           <!--<div class="input-group-append">
             <button class="btn btn-outline-secondary calendar" (click)="dpp.toggle()" type="button"></button>
           </div>-->
         </div>&nbsp;
+        <label for="lieuDepart">Lieu de Départ</label>
         <div class="input-group">
-          <input type="text" formControlName="lieuDepart" class="form-control" id="" placeholder="{{ 'Lieu départ' }}">
+          <input value="{{this.offer.lieuDepart}}" type="text" formControlName="lieuDepart" class="form-control" id="lieuDepart" placeholder="{{ 'Lieu départ' }}">
         </div>&nbsp;
+        <label for="lieuArrivee">Lieu Arrivée</label>
         <div class="input-group">
-          <input type="text" formControlName="lieuArrivee" class="form-control" id="" placeholder="{{ 'Lieu arrivée' }}">
+          <input value="{{this.offer.lieuArrivee}}" type="text" formControlName="lieuArrivee" class="form-control" id="lieuArrivee" placeholder="{{ 'Lieu arrivée' }}">
         </div>&nbsp;
+        <label for="nbPlaces">Nombre de places</label>
         <div class="input-group">
-          <input type="number" formControlName="nbPlaces" class="form-control" id="" placeholder="{{ 'Nombre de places' }}">
+          <input value="{{this.offer.nbPlaces}}" type="number" formControlName="nbPlaces" class="form-control" id="nbPlaces" placeholder="{{ 'Nombre de places' }}">
         </div>&nbsp;
+        <label for="disponibiliteOffre">Disponibilité</label>
         <div class="input-group">
-          <input type="text" formControlName="disponibiliteOffre" class="form-control" id="" placeholder="{{ 'Disponibilité' }}">
+          <input value="{{this.offer.disponibiliteOffre}}" type="text" formControlName="disponibiliteOffre" class="form-control" id="disponibiliteOffre" placeholder="{{ 'Disponibilité' }}">
         </div>
       </div>
     </form>

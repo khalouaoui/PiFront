@@ -33,6 +33,10 @@ public sendInvi(email : String) {
   return this.http.post(Settings.OFFRE_URL + '/'+'invi' +'?' + 'email' + '=' + email,{});
 }
 
+findById(id: number) {
+  return this.http.get(Settings.OFFRE_URL + '/' + id);
+}
+
 
 }
 

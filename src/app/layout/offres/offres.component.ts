@@ -21,6 +21,7 @@ export class OffresComponent implements OnInit {
   public matchingForm: FormGroup ;
   public employeeId : any;
   public email : any;
+  public offer : any;
 
 
   constructor(private router: Router , private userService: UserService, private offreService: OffreService, private modalService: NgbModal,public formBuilder: FormBuilder) {}
@@ -28,12 +29,12 @@ export class OffresComponent implements OnInit {
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({
-      dateDepart: ['', [Validators.required]] ,
-      dateRetour: ['', [Validators.required]],
-      lieuDepart: ['', [Validators.required]],
-      lieuArrivee: ['', [Validators.required]],
-      nbPlaces: ['', [Validators.required]],
-      disponibiliteOffre: ['', [Validators.required]]
+      dateDepart: [''] ,
+      dateRetour: [''],
+      lieuDepart: [''],
+      lieuArrivee: [''],
+      nbPlaces: [''],
+      disponibiliteOffre: [''] //[Validators.required]
 
   });  
       this.getUsers();
@@ -83,6 +84,13 @@ export class OffresComponent implements OnInit {
           });
   }
 
+  getOfferById(id : number)
+  {
+    this.offreService.findById(id).subscribe(
+       (data) => {this.offer = data;}
+    );
+  }
+
   update(id : number) {
     if (this.userForm.valid) {
         const body = {
@@ -125,6 +133,7 @@ export class OffresComponent implements OnInit {
   }
 
   open(content, id) {
+    this.getOfferById(id);
     this.id = id;
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
