@@ -55,23 +55,27 @@
     </div>
     <div class="modal-body">
       <form [formGroup]="userForm">
+        <label for="">Nom</label>
         <div class="form-group">
             <input value="{{this.user.nom}}" type="text" formControlName="nom"  class="form-control input-underline input-lg" id="" placeholder="{{ 'Nom' | translate }}">
         </div>
-
+        <label for="">Prenom</label>
         <div class="form-group">
             <input value="{{this.user.prenom}}" type="text" formControlName="prenom" class="form-control input-underline input-lg" id="" placeholder="{{ 'Prenom' | translate }}">
         </div>
-
+        <label for="">Email</label>
         <div class="form-group">
             <input value="{{this.user.mail}}" type="text" formControlName="mail" class="form-control input-underline input-lg" id="" placeholder="{{ 'Email' | translate }}">
         </div>
+        <label for="">Mot de passe</label>
         <div class="form-group">
             <input value="{{this.user.password}}" type="password" formControlName="password" class="form-control input-underline input-lg" id="" placeholder="{{ 'Password' | translate }}">
         </div>
+        <label for="">Fonction</label>
         <div class="form-group">
             <input value="{{this.user.fonction}}" type="text" formControlName="fonction"  class="form-control input-underline input-lg" id="" placeholder="{{ 'Fonction' | translate }}">
         </div>
+        <label for="">Equipe</label>
         <div class="form-group">
             <input value="{{this.user.equipe}}" type="text" formControlName="equipe" class="form-control input-underline input-lg" id="" placeholder="{{ 'Equipe' | translate }}">
         </div>
