@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -24,7 +25,7 @@ export class OffresComponent implements OnInit {
   public offer : any;
 
 
-  constructor(private router: Router , private userService: UserService, private offreService: OffreService, private modalService: NgbModal,public formBuilder: FormBuilder) {}
+  constructor(private router: Router ,private datepipe: DatePipe, private userService: UserService, private offreService: OffreService, private modalService: NgbModal,public formBuilder: FormBuilder) {}
 
 
   ngOnInit() {
@@ -87,7 +88,8 @@ export class OffresComponent implements OnInit {
   getOfferById(id : number)
   {
     this.offreService.findById(id).subscribe(
-       (data) => {this.offer = data;}
+       (data) => {this.offer = data; this.datepipe.transform(this.offer.dateDepart, 'yyyy-MM-dd');
+       this.datepipe.transform(this.offer.dateRetour, 'yyyy-MM-dd');}
     );
   }
 

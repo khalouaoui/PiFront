@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { OffresRoutingModule } from './offres-routing.module';
 import { PageHeaderModule } from 'src/app/shared';
@@ -19,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     OffresRoutingModule,
     FormsModule,
     NgbModule
-  ]
+  ],
+  providers: [DatePipe]
 })
 export class OffresModule { }

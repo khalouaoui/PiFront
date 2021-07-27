@@ -61,14 +61,14 @@
       <div class="form-group">
         <label for="dateDepart">Date de départ</label>
         <div class="input-group">
-          <input value="{{this.offer.dateDepart}}" type="date" id="dateDepart" formControlName="dateDepart" class="form-control" placeholder="{{this.offer.dateDepart}}">
+          <input value="{{this.offer.dateDepart | date : 'yyyy-MM-dd'}}" type="date" id="dateDepart" formControlName="dateDepart" class="form-control" placeholder="{{this.offer.dateDepart">
           <!--<div class="input-group-append">
             <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
           </div>-->
         </div>
           <label for="dateArrivee">Date Arrivée</label>
           <div class="input-group">
-          <input value="{{this.offer.dateArrivee}}" type="date" id="dateArrivee" formControlName="dateRetour" class="form-control" placeholder="yyyy-mm-dd"  >
+          <input value="{{this.offer.dateRetour | date : 'yyyy-MM-dd'}}" type="date" id="dateArrivee" formControlName="dateRetour" class="form-control" placeholder="yyyy-mm-dd"  >
           <!--<div class="input-group-append">
             <button class="btn btn-outline-secondary calendar" (click)="dpp.toggle()" type="button"></button>
           </div>-->
